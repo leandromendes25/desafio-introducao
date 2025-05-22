@@ -16,12 +16,6 @@ public class Biblioteca {
     autores.add(ator);
     }
     public void addEmprestimos(Livro livro, Cliente cliente) {
-        if (livro.getDisponivel()) {
-            Emprestimo livroASerImprestado = new Emprestimo(livro, cliente);
-            livroASerImprestado.getLivro().setDisponivel(false);
-            livroASerImprestado.getLivro().setDataAtualizacao(LocalDate.now());
-            emprestimos.add(livroASerImprestado);
-        }
         if(!livro.getDisponivel()){
             try {
                 throw new Exception("O livro não está disponivel para ser emprestado");
@@ -29,11 +23,22 @@ public class Biblioteca {
                 throw new RuntimeException(e);
             }
         }
-
+        if (livro.getDisponivel()) {
+            Emprestimo livroASerImprestado = new Emprestimo(livro, cliente);
+            livroASerImprestado.getLivro().setDisponivel(false);
+            livroASerImprestado.getLivro().setDataAtualizacao(LocalDate.now());
+            emprestimos.add(livroASerImprestado);
+        }
+    }
+    public void listarLivros(){
+        for(Livro x : livros){
+            System.out.println(x.getTitulo());
+        }
     }
     public void listarClientes(){
         for(Cliente c : clientes){
             System.out.println(c.getNome());
         }
     }
+
 }

@@ -11,7 +11,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Boolean response = false;
+        boolean response = false;
+        boolean entradaValida = false;
 
     do{
         System.out.println("Deseja pegar um livro emprestado? S/N");
@@ -20,10 +21,13 @@ public class Main {
        switch (character){
            case 'S': {
             response = true;
+            entradaValida = true;
             break;
            }
            case 'N': {
                response = false;
+               entradaValida = true;
+               break;
            }
            default: {
                System.out.println("Opção invalida");
@@ -31,7 +35,7 @@ public class Main {
            }
        }
 
-    }while (response);
+    }while (!entradaValida);
         Autor aut1 = new Autor(1,"Nana",LocalDate.of(1976,8,24));
         Autor aut2 = new Autor(2,"Baba",LocalDate.of(2000,1,12));
         Livro book1 = new Livro(1,"Harry",aut1);
@@ -41,10 +45,11 @@ public class Main {
         biblioteca.addLivros(book2);
         biblioteca.addAutores(aut1);
         biblioteca.addAutores(aut2);
+        biblioteca.listarLivros();
 
         Cliente cl1 = new Cliente(1,"Neo",LocalDate.of(2004,9,15),"neo@email.com");
         Cliente cl2 = new Cliente(2,"gabriel",LocalDate.of(2001,12,30),"gabriel@email.com");
-        Cliente cl3 = new Cliente(1,"elon",LocalDate.of(2004,9,15),"elon@email.com");
+        Cliente cl3 = new Cliente(3,"elon",LocalDate.of(2004,9,15),"elon@email.com");
         biblioteca.addEmprestimos(book1,cl1);
     }
 }
