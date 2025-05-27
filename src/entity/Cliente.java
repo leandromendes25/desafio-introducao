@@ -9,6 +9,7 @@ public class Cliente {
 private String nome;
 private LocalDate dataNascimento;
 private String email;
+
     public Cliente(Integer id, String nome, LocalDate dataNascimento, String email) {
         this.id = id;
         this.nome = nome;
@@ -47,4 +48,5 @@ private String email;
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
